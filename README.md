@@ -5,7 +5,7 @@ The `mpc.py` file contains all the logic for the signing of the transaction.
 
 To run the code, follow these steps:
 1. Create a vitual environment:
-``bash
+```bash
 python3 -m venv venv
 ```
 2. Activate the virtual environment:
