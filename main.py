@@ -35,4 +35,7 @@ mpc = MPCService(
 )
 
 mpc.sign_transaction(transaction)
-print(mpc.get_raw_tranaction())
+raw_transaction = mpc.get_raw_tranaction()
+print(raw_transaction)
+
+# what we want from here is to send the raw transaction to the blockchain
