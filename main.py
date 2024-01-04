@@ -40,9 +40,8 @@ mpc.sign_transaction(transaction)
 raw_transaction = mpc.get_raw_tranaction()
 print(raw_transaction)
 
-w3 = Web3(Web3.HTTPProvider(RPC_URL))
-
 # what we want from here is to send the raw transaction to the blockchain
+w3 = Web3(Web3.HTTPProvider(RPC_URL))
 tx_hash = w3.eth.send_raw_transaction(raw_transaction)
 receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
 print(receipt)
