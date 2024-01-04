@@ -1,11 +1,13 @@
 from dotenv import load_dotenv
 from mpc import MPCService
 from os import getenv
+from web3 import Web3
 
 load_dotenv()
 
 FIREBLOCKS_API_SECRET = getenv("FIREBLOCKS_API_SECRET")
 FIREBLOCKS_API_KEY = getenv("FIREBLOCKS_API_KEY")
+RPC_URL = getenv("RPC_URL")
 
 MPC_SERVICE_NAME = "fireblocks"
 CLIENT_ID = "e94aecb1-5daf-47f3-948f-2a639a56baa6"
@@ -38,4 +40,9 @@ mpc.sign_transaction(transaction)
 raw_transaction = mpc.get_raw_tranaction()
 print(raw_transaction)
 
+w3 = Web3(Web3.HTTPProvider(RPC_URL))
+
 # what we want from here is to send the raw transaction to the blockchain
+tx_hash = w3.eth.send_raw_transaction(raw_transaction)
+receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+print(receipt)
