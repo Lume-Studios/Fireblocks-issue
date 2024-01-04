@@ -4,7 +4,7 @@ In the `main.py` file is the transaction we are trying to sign using the typed m
 The `mpc.py` file contains all the logic for the signing of the transaction.
 
 To run the code, follow these steps:
-1. Create a `.env` file with the variables `FIREBLOCKS_API_KEY` and `FIREBLOCKS_API_SECRET`.
+1. Create a `.env` file with the variables `FIREBLOCKS_API_KEY`, `FIREBLOCKS_API_SECRET` and `RPC_URL`.
 2. Create a vitual environment:
 ```bash
 python3 -m venv venv
