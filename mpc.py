@@ -9,10 +9,9 @@ from fireblocks_sdk import (
     TYPED_MESSAGE,
     VAULT_ACCOUNT,
     PagedVaultAccountsRequestFilters,
-    RawMessage,
-    UnsignedMessage,
 )
 from eth_utils import add_0x_prefix, keccak, remove_0x_prefix, to_bytes, to_int
+from hashlib import sha256
 
 
 class Fireblocks:
