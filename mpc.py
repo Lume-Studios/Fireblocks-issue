@@ -88,32 +88,32 @@ class Fireblocks:
             #     source=TransferPeerPath(VAULT_ACCOUNT, vault_id),
             #     note=note,
             #     extra_parameters={
-            #         "rawMessageData": RawMessage(
-            #             [
-            #                 UnsignedMessage(
-            #                     content=raw,
-            #                     bip44addressIndex=self.bip44AddressIndex,
-            #                 )
-            #             ]
-            #         )
+            #         "rawMessageData": {
+            #             "messages": [
+            #                 {
+            #                     "content": raw,
+            #                     "bip44addressIndex": self.bip44AddressIndex,
+            #                     "type": "ETH_MESSAGE",
+            #                 }
+            #             ],
+            #         },
             #     },
             # ).values()
             id, status = self.fireblocks.create_transaction(
                 tx_type=self.tx_type,
                 asset_id=asset_id,
                 source=TransferPeerPath(VAULT_ACCOUNT, vault_id),
-                note=note,
+                note="ETH Test Message",
                 extra_parameters={
                     "rawMessageData": {
                         "messages": [
                             {
-                                "content": raw,
+                                "content": sha256(raw.encode()).hexdigest(),
                                 "bip44addressIndex": self.bip44AddressIndex,
                                 "type": "ETH_MESSAGE",
                             }
-                        ],
-                    },
-                    "amount": 0,
+                        ]
+                    }
                 },
             ).values()
 
