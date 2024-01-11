@@ -12,14 +12,14 @@ RPC_URL = getenv("RPC_URL")
 MPC_SERVICE_NAME = "fireblocks"
 CLIENT_ID = "e94aecb1-5daf-47f3-948f-2a639a56baa6"
 FIREBLOCKS_BASE_URL = "https://api.fireblocks.io"
-FIREBLOCKS_ASSET_ID = "MATIC_POLYGON"
+FIREBLOCKS_ASSET_ID = "ETH_TEST5"  # sepolia
 
 
 transaction = {
     "value": 0,
     "maxFeePerGas": 183154603097,
     "maxPriorityFeePerGas": 3,
-    "chainId": 11155111,
+    "chainId": 11155111,  # sepolia
     "from": "0x87DE9dC28F4F2731647BAde25BF71acAE31c2A9A",
     "nonce": 0,
     "gas": 1965958,
@@ -35,7 +35,7 @@ mpc = MPCService(
         "api_key": FIREBLOCKS_API_KEY,
         "api_secret": FIREBLOCKS_API_SECRET,
     },
-    {"fireblocks_asset_id": FIREBLOCKS_ASSET_ID},
+    fireblocks_asset_id=FIREBLOCKS_ASSET_ID,
 )
 
 mpc.sign_transaction(transaction)

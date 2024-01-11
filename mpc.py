@@ -62,7 +62,6 @@ class Fireblocks:
 
         fireblocks_info = self.fireblocks.get_deposit_addresses(self.vault_id, asset_id)
         self.bip44AddressIndex = fireblocks_info[0]["bip44AddressIndex"]
-        print(fireblocks_info[0]["address"])
 
         try:
             return fireblocks_info[0]["address"]
@@ -175,7 +174,6 @@ class MPCService:
         )
 
     def sign_transaction(self, transaction: dict) -> None:
-        print(transaction)
         encoded_transaction = self.__rlp_encode_transaction(transaction)
         raw_transaction = remove_0x_prefix(
             keccak(hexstr=add_0x_prefix(encoded_transaction)).hex()
@@ -184,6 +182,7 @@ class MPCService:
         self.signed_transaction = self.mpc_client.sign(
             self.client_id, self.asset_id, raw_transaction, self.attempts
         )
+
         self.raw_transaction = self.__rlp_encode_transaction_payload(transaction)
 
     def get_signed_operation(self, format: str = "bytes") -> bytes | str:
