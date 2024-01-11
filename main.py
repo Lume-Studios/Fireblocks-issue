@@ -40,7 +40,7 @@ mpc = MPCService(
 
 mpc.sign_transaction(transaction)
 raw_transaction = mpc.get_raw_tranaction()
-print(raw_transaction)
+print(raw_transaction.hex())
 
 # what we want from here is to send the raw transaction to the blockchain
 w3 = Web3(Web3.HTTPProvider(RPC_URL))
